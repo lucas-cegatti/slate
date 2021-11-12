@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta
             name="description"
-            content="Documentation for the Kittn API"
+            content="Documentation for the FastWebhooks API"
         >
-    <title>API Reference</title>
+    <title>FastWebhooks API Docs</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -303,7 +303,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-253a6dc5.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="ruby">ruby</a>
@@ -317,21 +317,49 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#why-use-our-api" class="toc-h2 toc-link" data-title="Why use our api?">Why use our api?</a>
+                  </li>
+                  <li>
+                    <a href="#about-this-documentation" class="toc-h2 toc-link" data-title="About this documentation">About this documentation</a>
+                  </li>
+                  <li>
+                    <a href="#how-to-connect" class="toc-h2 toc-link" data-title="How to connect">How to connect</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#create-a-webhook" class="toc-h2 toc-link" data-title="Create a webhook">Create a webhook</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#get-all-webhooks" class="toc-h2 toc-link" data-title="Get All Webhooks">Get All Webhooks</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-a-specific-webhook" class="toc-h2 toc-link" data-title="Get a Specific Webhook">Get a Specific Webhook</a>
+                  </li>
+                  <li>
+                    <a href="#webhook-responses" class="toc-h2 toc-link" data-title="Webhook Responses">Webhook Responses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#destinations" class="toc-h1 toc-link" data-title="Destinations">Destinations</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#cancel-a-destination" class="toc-h2 toc-link" data-title="Cancel a Destination">Cancel a Destination</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-destination" class="toc-h2 toc-link" data-title="Get a specific destination">Get a specific destination</a>
+                  </li>
+                  <li>
+                    <a href="#destination-status" class="toc-h2 toc-link" data-title="Destination Status">Destination Status</a>
                   </li>
               </ul>
           </li>
@@ -340,141 +368,395 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href="https://rapidapi.com/fastwebhooks-fastwebhooks-default/api/webhooks2" target="_blank"><img src="https://storage.googleapis.com/code-snippets/connect-on-rapidapi-light.png" width="215" alt="Connect on RapidAPI"></a></li>
             <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+        <h1 id='introduction'>Introduction</h1><h2 id='why-use-our-api'>Why use our api?</h2>
+<ul>
+<li>We will take care of delivery your message to its destination, giving 10 retries per destination in case of failures</li>
+<li>You can customize the request headers sent to your destinations</li>
+<li>Up to 3 destinations per webhook</li>
+<li>Encrypted payload within our environment</li>
+<li>Simple and easy to use</li>
+</ul>
+<h2 id='about-this-documentation'>About this documentation</h2>
+<p>We have language bindings in Shell, Ruby, Python and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h2 id='how-to-connect'>How to connect</h2>
+<p>Our api is hosted at <a href="https://rapidapi.com/">RapidApi</a> you must have an account there, it&#39;s free and our api supports a free plan that allows you to test our endpoints, check our plans <a href="https://rapidapi.com/fastwebhooks-fastwebhooks-default/api/webhooks2/pricing">here</a>.</p>
 <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>We use RapidApi for authentication, you just need to subscribe to one of our plans and use the provided keys to call our endpoints. </p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>We have a free plan where you can create 150 webhooks per day, check our plans <a href="https://rapidapi.com/fastwebhooks-fastwebhooks-default/api/webhooks2/pricing">here</a>.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>RapidApi will expect two headers to be given:</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
+<ul>
+<li><code>x-rapidapi-key</code> your unique rapid api key to use on your subscribed apis</li>
+<li><code>x-rapidapi-host</code> the api host you&#39;re calling, in our case <code>webhooks2.p.rapidapi.com</code></li>
+</ul>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>For more details here&#39;s a <a href="https://docs.rapidapi.com/docs/consumer-quick-start-guide">quick start guide</a> from RapidApi&#39;s doc</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Your created webhooks will be associated to your RapidApi's user key.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='webhooks'>Webhooks</h1><h2 id='create-a-webhook'>Create a webhook</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"json"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://webhooks2.p.rapidapi.com/"</span><span class="p">)</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">https</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">https</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-key"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"my-key"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"webhooks2.p.rapidapi.com"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">dump</span><span class="p">({</span>
+  <span class="s2">"webhook"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"payload"</span><span class="p">:</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">: 1}"</span><span class="p">,</span>
+    <span class="s2">"destinations"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://my-example.com"</span><span class="p">,</span>
+        <span class="s2">"additional_headers"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">"x-my-header"</span><span class="p">:</span> <span class="s2">"my-value"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">https</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"webhooks2.p.rapidapi.com"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
+  <span class="s">"webhook"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"payload"</span><span class="p">:</span> <span class="s">"{</span><span class="se">\"</span><span class="s">id</span><span class="se">\"</span><span class="s">: 1}"</span><span class="p">,</span>
+    <span class="s">"destinations"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">"url"</span><span class="p">:</span> <span class="s">"https://my-example.com"</span><span class="p">,</span>
+        <span class="s">"additional_headers"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">"x-my-header"</span><span class="p">:</span> <span class="s">"my-value"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'x-rapidapi-key'</span><span class="p">:</span> <span class="s">'my-key'</span><span class="p">,</span>
+  <span class="s">'x-rapidapi-host'</span><span class="p">:</span> <span class="s">'webhooks2.p.rapidapi.com'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://webhooks2.p.rapidapi.com/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-key: my-key'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-host: webhooks2.p.rapidapi.com'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "webhook": {
+        "payload": "{\"id\": 1}",
+        "destinations": [
+            {
+                "url": "https://my-example.com",
+                "additional_headers": {
+                    "x-my-header": "my-value"
+                }
+            }
+        ]
+    }
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">my-key</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-host</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">webhooks2.p.rapidapi.com</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">raw</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">webhook</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">payload</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">{</span><span class="se">\"</span><span class="s2">id</span><span class="se">\"</span><span class="s2">: 1}</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">destinations</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://my-example.com</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">additional_headers</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">x-my-header</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-value</span><span class="dl">"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">raw</span><span class="p">,</span>
+  <span class="na">redirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">follow</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://webhooks2.p.rapidapi.com/</span><span class="dl">"</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"additional_headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"x-my-header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-value"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40922a32-9a78-41f0-90aa-0790c0bf781a"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_response_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-example.com"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"webhook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEH_xRJkg0mrf6KHQeV1eKWg6KF2oJjuFoYD"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This endpoint creates a new webhook with up to 3 destinations.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://webhooks2.p.rapidapi.com/</code></p>
+<h3 id='webhook-parameters'>Webhook Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>The payload to be sent to this webhook&#39;s destinations, we accept payload as strings. Payloads are encrypted in our environment and we decrypt them before sending to the destinatination. Avoid sending sensitive data.</td>
+</tr>
+<tr>
+<td>destinations</td>
+<td>list of destinations to send the payload to, you can set up to 3 destinations per webhook</td>
+</tr>
+</tbody></table>
+<h3 id='destinations-parameters'>Destinations Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>the url to send the payload to</td>
+</tr>
+<tr>
+<td>additional_headers</td>
+<td>additional headers to append to the request</td>
+</tr>
+</tbody></table>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="notice">
+We always send the payload as a POST method, this cannot be changed.
+</aside>
+
+<aside class="notice">
+Our default content-type header is application/json, you can change it at destination's additional headers
+</aside>
+<h2 id='get-all-webhooks'>Get All Webhooks</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://webhooks2.p.rapidapi.com/"</span><span class="p">)</span>
+
+<span class="n">https</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">https</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-key"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"your-key"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"webhooks2.p.rapidapi.com"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">https</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"webhooks2.p.rapidapi.com"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'x-rapidapi-key'</span><span class="p">:</span> <span class="s">'your-key'</span><span class="p">,</span>
+  <span class="s">'x-rapidapi-host'</span><span class="p">:</span> <span class="s">'webhooks2.p.rapidapi.com'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://webhooks2.p.rapidapi.com/'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-key: your-key'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-host: webhooks2.p.rapidapi.com'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">your-key</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-host</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">webhooks2.p.rapidapi.com</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
+  <span class="na">redirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">follow</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://webhooks2.p.rapidapi.com/</span><span class="dl">"</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"additional_headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"x-my-header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myHeaderValue"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"445a95fa-cd68-4b29-8962-4d728d58324a"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"last_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-11T17:54:54.499069"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"last_response_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-example-2.com"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"webhook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEH_02sNtwPH4CiFjFK9XzEQLup1E31b_BpV"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"additional_headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+                    </span><span class="nl">"attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"error_hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://http.cat/404"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=</span><span class="se">\"</span><span class="s2">1.0</span><span class="se">\"</span><span class="s2"> encoding=</span><span class="se">\"</span><span class="s2">iso-8859-1</span><span class="se">\"</span><span class="s2">?&gt;</span><span class="se">\n</span><span class="s2">&lt;!DOCTYPE html PUBLIC </span><span class="se">\"</span><span class="s2">-//W3C//DTD XHTML 1.0 Transitional//EN</span><span class="se">\"\n</span><span class="s2">         </span><span class="se">\"</span><span class="s2">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&lt;html xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2"> xml:lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2"> lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n\t</span><span class="s2">&lt;head&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;title&gt;404 - Not Found&lt;/title&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/head&gt;</span><span class="se">\n\t</span><span class="s2">&lt;body&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;h1&gt;404 - Not Found&lt;/h1&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;script type=</span><span class="se">\"</span><span class="s2">text/javascript</span><span class="se">\"</span><span class="s2"> src=</span><span class="se">\"</span><span class="s2">//wpc.75674.betacdn.net/0075674/www/ec_tpm_bcon.js</span><span class="se">\"</span><span class="s2">&gt;&lt;/script&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/body&gt;</span><span class="se">\n</span><span class="s2">&lt;/html&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"error_hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://http.cat/404"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=</span><span class="se">\"</span><span class="s2">1.0</span><span class="se">\"</span><span class="s2"> encoding=</span><span class="se">\"</span><span class="s2">iso-8859-1</span><span class="se">\"</span><span class="s2">?&gt;</span><span class="se">\n</span><span class="s2">&lt;!DOCTYPE html PUBLIC </span><span class="se">\"</span><span class="s2">-//W3C//DTD XHTML 1.0 Transitional//EN</span><span class="se">\"\n</span><span class="s2">         </span><span class="se">\"</span><span class="s2">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&lt;html xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2"> xml:lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2"> lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n\t</span><span class="s2">&lt;head&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;title&gt;404 - Not Found&lt;/title&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/head&gt;</span><span class="se">\n\t</span><span class="s2">&lt;body&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;h1&gt;404 - Not Found&lt;/h1&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;script type=</span><span class="se">\"</span><span class="s2">text/javascript</span><span class="se">\"</span><span class="s2"> src=</span><span class="se">\"</span><span class="s2">//wpc.75674.betacdn.net/0075674/www/ec_tpm_bcon.js</span><span class="se">\"</span><span class="s2">&gt;&lt;/script&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/body&gt;</span><span class="se">\n</span><span class="s2">&lt;/html&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed692c05-ddb2-453e-9613-5c5fb70245c3"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"last_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-11T17:54:58.922085"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"last_response_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retryable"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-example.com/"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"webhook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEH_0qXRu3IEQNfH8OCoZYIZ9hNTeEpQMFgy"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all webhooks and their correspondent destinations.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code>GET https://webhooks2.p.rapidapi.com/</code></p>
+<h3 id='http-response'>HTTP Response</h3>
+<p>See <a href="#webhook-responses">Webhook Responses</a></p>
+
+<!-- ### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+include_cats | false | If set to true, the result will also include cats.
+available | true | If set to false, the result will include kittens that have already been adopted. -->
+
+<!-- <aside class="success">
+Webhook retention period is 15 days!
+</aside> -->
+<h2 id='get-a-specific-webhook'>Get a Specific Webhook</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://webhooks2.p.rapidapi.com/WEH_Pmvq-fpEGMeSPTCyKKfi3mBJL0TV4EVQ"</span><span class="p">)</span>
+
+<span class="n">https</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">https</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-key"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"your-key"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"webhooks2.p.rapidapi.com"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">https</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"webhooks2.p.rapidapi.com"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'x-rapidapi-key'</span><span class="p">:</span> <span class="s">'your-key'</span><span class="p">,</span>
+  <span class="s">'x-rapidapi-host'</span><span class="p">:</span> <span class="s">'webhooks2.p.rapidapi.com'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/WEH_Pmvq-fpEGMeSPTCyKKfi3mBJL0TV4EVQ"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://webhooks2.p.rapidapi.com/WEH_Pmvq-fpEGMeSPTCyKKfi3mBJL0TV4EVQ'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-key: your-key'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-host: webhooks2.p.rapidapi.com'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">your-key</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-host</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">webhooks2.p.rapidapi.com</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
+  <span class="na">redirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">follow</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://webhooks2.p.rapidapi.com/WEH_Pmvq-fpEGMeSPTCyKKfi3mBJL0TV4EVQ</span><span class="dl">"</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"additional_headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"x-my-header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-header-value"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d6356729-505d-43e6-8016-016e223dfdd0"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T17:47:40.132472"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_response_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-example.com"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"webhook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEH_Pmvq-fpEGMeSPTCyKKfi3mBJL0TV4EVQ"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a specific webhook and its destinations.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>https://webhooks2.p.rapidapi.com/&lt;webhook_id&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -483,38 +765,182 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>webhook_id</td>
+<td>The ID of the webhook to retrieve</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h3 id='http-response-2'>HTTP Response</h3>
+<p>See <a href="#webhook-responses">Webhook Responses</a></p>
+<h2 id='webhook-responses'>Webhook Responses</h2>
+<p>Here&#39;s a list of detailed response fields for the webhooks api.</p>
+<h3 id='webhook'>Webhook</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>webhook_id</td>
+<td>unique id representing your webhook</td>
+</tr>
+<tr>
+<td>destinations</td>
+<td>list of destinations associated to your webhook</td>
+</tr>
+</tbody></table>
+<h3 id='destination'>Destination</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>unique id representing your destinations</td>
+</tr>
+<tr>
+<td>status</td>
+<td>current status of your destination, possible values are listed <a href="#status">here</a></td>
+</tr>
+<tr>
+<td>attempt</td>
+<td>the number of attempts made so far</td>
+</tr>
+<tr>
+<td>url</td>
+<td>the url set to this destination</td>
+</tr>
+<tr>
+<td>additional_headers</td>
+<td>headers used when calling this destination&#39;s url</td>
+</tr>
+<tr>
+<td>last_attempt_at</td>
+<td>date time that happened the last attempt of this destination, in UTC</td>
+</tr>
+<tr>
+<td>last_response_code</td>
+<td>last response code returned by this destination&#39;s call</td>
+</tr>
+<tr>
+<td>errors</td>
+<td>list of errors that happened on this destination</td>
+</tr>
+</tbody></table>
+<h3 id='errors'>Errors</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error_code</td>
+<td>last http code returned</td>
+</tr>
+<tr>
+<td>error_hint</td>
+<td>a hint linking to http.cat with the error code returned</td>
+</tr>
+<tr>
+<td>error_message</td>
+<td>the http body returned by the destination</td>
+</tr>
+</tbody></table>
+<h1 id='destinations'>Destinations</h1><h2 id='cancel-a-destination'>Cancel a Destination</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"json"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://webhooks2.p.rapidapi.com/destinations/cancel"</span><span class="p">)</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<span class="n">https</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">https</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-key"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"my-key"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"webhooks2.p.rapidapi.com"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Content-Type"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"application/json"</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">dump</span><span class="p">({</span>
+  <span class="s2">"destination_id"</span><span class="p">:</span> <span class="s2">"40922a32-9a78-41f0-90aa-0790c0bf781a"</span>
+<span class="p">})</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">https</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"webhooks2.p.rapidapi.com"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
+  <span class="s">"destination_id"</span><span class="p">:</span> <span class="s">"40922a32-9a78-41f0-90aa-0790c0bf781a"</span>
+<span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'x-rapidapi-key'</span><span class="p">:</span> <span class="s">'my-key'</span><span class="p">,</span>
+  <span class="s">'x-rapidapi-host'</span><span class="p">:</span> <span class="s">'webhooks2.p.rapidapi.com'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/destinations/cancel"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://webhooks2.p.rapidapi.com/destinations/cancel'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-key: my-key'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-host: webhooks2.p.rapidapi.com'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "destination_id": "40922a32-9a78-41f0-90aa-0790c0bf781a"
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">my-key</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-host</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">webhooks2.p.rapidapi.com</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">raw</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">destination_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">40922a32-9a78-41f0-90aa-0790c0bf781a</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">raw</span><span class="p">,</span>
+  <span class="na">redirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">follow</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://webhooks2.p.rapidapi.com/destinations/cancel</span><span class="dl">"</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"destinations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"additional_headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"x-my-header"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-value"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40922a32-9a78-41f0-90aa-0790c0bf781a"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"last_response_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cancelled"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-example.com"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"webhook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WEH_xRJkg0mrf6KHQeV1eKWg6KF2oJjuFoYD"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>This endpoints cancels a <code>retryable</code> or <code>pending</code> destination</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://webhooks2.p.rapidapi.com/destinations/cancel</code></p>
+<h3 id='destination-parameters'>Destination Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -522,8 +948,129 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>destination_id</td>
+<td>The ID of the destination to cancel</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-destination'>Get a specific destination</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
+<span class="nb">require</span> <span class="s2">"net/http"</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://webhooks2.p.rapidapi.com/destinations/59c94859-6594-4f50-9cc0-54843680b5da"</span><span class="p">)</span>
+
+<span class="n">https</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">https</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-key"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"my-key"</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"x-rapidapi-host"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"webhooks2.p.rapidapi.com"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">https</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"webhooks2.p.rapidapi.com"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'x-rapidapi-key'</span><span class="p">:</span> <span class="s">'my-key'</span><span class="p">,</span>
+  <span class="s">'x-rapidapi-host'</span><span class="p">:</span> <span class="s">'webhooks2.p.rapidapi.com'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/destinations/59c94859-6594-4f50-9cc0-54843680b5da"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://webhooks2.p.rapidapi.com/destinations/59c94859-6594-4f50-9cc0-54843680b5da'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-key: my-key'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-rapidapi-host: webhooks2.p.rapidapi.com'</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">myHeaders</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">my-key</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">myHeaders</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-rapidapi-host</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">webhooks2.p.rapidapi.com</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">requestOptions</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="nx">myHeaders</span><span class="p">,</span>
+  <span class="na">redirect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">follow</span><span class="dl">'</span>
+<span class="p">};</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://webhooks2.p.rapidapi.com/destinations/59c94859-6594-4f50-9cc0-54843680b5da</span><span class="dl">"</span><span class="p">,</span> <span class="nx">requestOptions</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"additional_headers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"attempt"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"error_hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://http.cat/404"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=</span><span class="se">\"</span><span class="s2">1.0</span><span class="se">\"</span><span class="s2"> encoding=</span><span class="se">\"</span><span class="s2">iso-8859-1</span><span class="se">\"</span><span class="s2">?&gt;</span><span class="se">\n</span><span class="s2">&lt;!DOCTYPE html PUBLIC </span><span class="se">\"</span><span class="s2">-//W3C//DTD XHTML 1.0 Transitional//EN</span><span class="se">\"\n</span><span class="s2">         </span><span class="se">\"</span><span class="s2">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&lt;html xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2"> xml:lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2"> lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n\t</span><span class="s2">&lt;head&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;title&gt;404 - Not Found&lt;/title&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/head&gt;</span><span class="se">\n\t</span><span class="s2">&lt;body&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;h1&gt;404 - Not Found&lt;/h1&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;script type=</span><span class="se">\"</span><span class="s2">text/javascript</span><span class="se">\"</span><span class="s2"> src=</span><span class="se">\"</span><span class="s2">//wpc.75674.betacdn.net/0075674/www/ec_tpm_bcon.js</span><span class="se">\"</span><span class="s2">&gt;&lt;/script&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/body&gt;</span><span class="se">\n</span><span class="s2">&lt;/html&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"error_hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://http.cat/404"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;?xml version=</span><span class="se">\"</span><span class="s2">1.0</span><span class="se">\"</span><span class="s2"> encoding=</span><span class="se">\"</span><span class="s2">iso-8859-1</span><span class="se">\"</span><span class="s2">?&gt;</span><span class="se">\n</span><span class="s2">&lt;!DOCTYPE html PUBLIC </span><span class="se">\"</span><span class="s2">-//W3C//DTD XHTML 1.0 Transitional//EN</span><span class="se">\"\n</span><span class="s2">         </span><span class="se">\"</span><span class="s2">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n</span><span class="s2">&lt;html xmlns=</span><span class="se">\"</span><span class="s2">http://www.w3.org/1999/xhtml</span><span class="se">\"</span><span class="s2"> xml:lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2"> lang=</span><span class="se">\"</span><span class="s2">en</span><span class="se">\"</span><span class="s2">&gt;</span><span class="se">\n\t</span><span class="s2">&lt;head&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;title&gt;404 - Not Found&lt;/title&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/head&gt;</span><span class="se">\n\t</span><span class="s2">&lt;body&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;h1&gt;404 - Not Found&lt;/h1&gt;</span><span class="se">\n\t\t</span><span class="s2">&lt;script type=</span><span class="se">\"</span><span class="s2">text/javascript</span><span class="se">\"</span><span class="s2"> src=</span><span class="se">\"</span><span class="s2">//wpc.75674.betacdn.net/0075674/www/ec_tpm_bcon.js</span><span class="se">\"</span><span class="s2">&gt;&lt;/script&gt;</span><span class="se">\n\t</span><span class="s2">&lt;/body&gt;</span><span class="se">\n</span><span class="s2">&lt;/html&gt;</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59c94859-6594-4f50-9cc0-54843680b5da"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_attempt_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T17:58:05.352116"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"last_response_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"retryable"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://my-example.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoints fetchs a specific destination and its details.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://webhooks2.p.rapidapi.com/destinations/&lt;destination_id&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>destination_id</td>
+<td>The ID of the destination to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='destination-status'>Destination Status</h2>
+<p>Here are all possible status for a destination</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pending</td>
+<td>The destination was created and is awaiting its execution</td>
+</tr>
+<tr>
+<td>running</td>
+<td>We are trying to deliver the payload to the destination</td>
+</tr>
+<tr>
+<td>completed</td>
+<td>The payload was successfully delivered to the destination</td>
+</tr>
+<tr>
+<td>retryable</td>
+<td>The destination is failing to receive the payload, it will have up to 10 retries until failing</td>
+</tr>
+<tr>
+<td>cancelled</td>
+<td>The destination was cancelled via api</td>
+</tr>
+<tr>
+<td>failed</td>
+<td>The destination replied with an error code, e.g. connection refused, or it reached the maximum of 10 retries. The api will not make any further request and will remove this destination from the webhooks queue</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
@@ -545,35 +1092,15 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Unauthorized -- Your RapidAApi key is wrong.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The resource could not be found.</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>422</td>
+<td>Your request failed at validation, check the response for details.</td>
 </tr>
 <tr>
 <td>500</td>
