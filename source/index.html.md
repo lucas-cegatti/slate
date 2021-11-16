@@ -28,7 +28,7 @@ meta:
 # Introduction
 ## Why use our api?
 
-- We will take care of delivery your message to its destination, giving 10 retries per destination in case of failures
+- 10 retries per destination in case of failures
 - You can customize the request headers sent to your destinations
 - Up to 3 destinations per webhook
 - Encrypted payload within our environment
