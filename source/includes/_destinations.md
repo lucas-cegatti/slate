@@ -1,13 +1,118 @@
 # Destinations
 
+## Get All Destinations
+
+```ruby
+require "uri"
+require "net/http"
+
+url = URI("https://webhooks2.p.rapidapi.com/destinations")
+
+https = Net::HTTP.new(url.host, url.port)
+https.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+request["x-rapidapi-key"] = "your-key"
+request["x-rapidapi-host"] = "webhooks2.p.rapidapi.com"
+
+response = https.request(request)
+puts response.read_body
+
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("webhooks2.p.rapidapi.com")
+payload = ''
+headers = {
+  'x-rapidapi-key': 'your-key',
+  'x-rapidapi-host': 'webhooks2.p.rapidapi.com'
+}
+conn.request("GET", "/destinations", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+```shell
+curl --location --request GET 'https://webhooks2.p.rapidapi.com/destinations' \
+--header 'x-rapidapi-key: your-key' \
+--header 'x-rapidapi-host: webhooks2.p.rapidapi.com'
+```
+
+```javascript
+var myHeaders = new Headers();
+myHeaders.append("x-rapidapi-key", "your-key");
+myHeaders.append("x-rapidapi-host", "webhooks2.p.rapidapi.com");
+
+var requestOptions = {
+  method: 'GET',
+  headers: myHeaders,
+  redirect: 'follow'
+};
+
+fetch("https://webhooks2.p.rapidapi.com/destinations", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "data": [
+        {
+            "additional_headers": {
+                "x-my-header": "my-value"
+            },
+            "attempt": 1,
+            "errors": [],
+            "id": "ad264149-40f8-4001-91bf-5e2f87a30e17",
+            "last_attempt_at": "2021-11-08T10:42:33.399285",
+            "last_response_code": "200",
+            "status": "completed",
+            "url": "https://example.com/webhooks"
+        }
+    ],
+    "metadata": {
+        "limit": 50,
+        "next": null,
+        "previous": null,
+        "total_count": 1
+    }
+}
+```
+
+This endpoint retrieves all destinations, use the [filters](#query-parameters) available to restrict your search.
+
+### HTTP Request
+
+`GET https://webhooks2.p.rapidapi.com/destinations`
+
+### HTTP Response
+
+See [Destination Response](#destination-base-response)
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+limit | 50 | restrict the limit of records returned by the endpoint, maximum value allowed is 500
+next | null | the next cursor page, returns the next 50 records on the pagination, this data is returned at the metadata object on the response, more [here](#cursor-metadata-response)
+previous | null | the previous cursor page, returns the previous 50 records on the pagination, this data is returned at the metadata object on the response, more [here](#cursor-metadata-response)
+status | all | filters the records by their status, the list of all possible status is available [here](#destination-status)
+from_date | | the from date to limit the range of records returned, dates must be send using iso8601 format, ie yyyy-MM-DD, other formats will be ignored
+to_date | | the to date to limit the range of records returned, dates must be send using iso8601 format, ie yyyy-MM-DD, other formats will be ignored
+
 ## Cancel a Destination
 
 ```ruby
 require "uri"
-require "json"
 require "net/http"
 
-url = URI("https://webhooks2.p.rapidapi.com/destinations/cancel")
+url = URI("https://webhooks2.p.rapidapi.com/destinations/40922a32-9a78-41f0-90aa-0790c0bf781a/cancel")
 
 https = Net::HTTP.new(url.host, url.port)
 https.use_ssl = true
@@ -15,55 +120,39 @@ https.use_ssl = true
 request = Net::HTTP::Post.new(url)
 request["x-rapidapi-key"] = "my-key"
 request["x-rapidapi-host"] = "webhooks2.p.rapidapi.com"
-request["Content-Type"] = "application/json"
-request.body = JSON.dump({
-  "destination_id": "40922a32-9a78-41f0-90aa-0790c0bf781a"
-})
 
 response = https.request(request)
 puts response.read_body
-
-
 ```
 
 ```python
 import http.client
-import json
 
 conn = http.client.HTTPSConnection("webhooks2.p.rapidapi.com")
-payload = json.dumps({
-  "destination_id": "40922a32-9a78-41f0-90aa-0790c0bf781a"
-})
+payload = ''
 headers = {
   'x-rapidapi-key': 'my-key',
-  'x-rapidapi-host': 'webhooks2.p.rapidapi.com',
-  'Content-Type': 'application/json'
+  'x-rapidapi-host': 'webhooks2.p.rapidapi.com'
 }
-conn.request("POST", "/destinations/cancel", payload, headers)
+conn.request("POST", "/destinations/40922a32-9a78-41f0-90aa-0790c0bf781a/cancel", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
 
 ```shell
-curl --location --request POST 'https://webhooks2.p.rapidapi.com/destinations/cancel' \
+curl --location --request POST 'https://webhooks2.p.rapidapi.com/destinations/40922a32-9a78-41f0-90aa-0790c0bf781a/cancel' \
 --header 'x-rapidapi-key: my-key' \
 --header 'x-rapidapi-host: webhooks2.p.rapidapi.com' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "destination_id": "40922a32-9a78-41f0-90aa-0790c0bf781a"
-}'
+--data-raw ''
 ```
 
 ```javascript
 var myHeaders = new Headers();
 myHeaders.append("x-rapidapi-key", "my-key");
 myHeaders.append("x-rapidapi-host", "webhooks2.p.rapidapi.com");
-myHeaders.append("Content-Type", "application/json");
 
-var raw = JSON.stringify({
-  "destination_id": "40922a32-9a78-41f0-90aa-0790c0bf781a"
-});
+var raw = "";
 
 var requestOptions = {
   method: 'POST',
@@ -72,7 +161,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://webhooks2.p.rapidapi.com/destinations/cancel", requestOptions)
+fetch("https://webhooks2.p.rapidapi.com/destinations/40922a32-9a78-41f0-90aa-0790c0bf781a/cancel", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -106,7 +195,7 @@ This endpoints cancels a `retryable` or `pending` destination
 
 ### HTTP Request
 
-`POST https://webhooks2.p.rapidapi.com/destinations/cancel`
+`POST https://webhooks2.p.rapidapi.com/destinations/<destination_id>/cancel`
 
 ### Destination Parameters
 
@@ -211,6 +300,10 @@ Parameter | Description
 --------- | -----------
 destination_id | The ID of the destination to retrieve
 
+### HTTP Response
+
+See [Destination Response](#destination-base-response)
+
 ## Destination Status
 
 Here are all possible status for a destination
@@ -218,8 +311,8 @@ Here are all possible status for a destination
 Status | Description
 --------- | -----------
 pending | The destination was created and is awaiting its execution
-running | We are trying to deliver the payload to the destination
+running | We are delivering the payload to its destination
 completed | The payload was successfully delivered to the destination
 retryable | The destination is failing to receive the payload, it will have up to 10 retries until failing
-cancelled | The destination was cancelled via api
+cancelled | The destination was cancelled by the user
 failed | The destination replied with an error code, e.g. connection refused, or it reached the maximum of 10 retries. The api will not make any further request and will remove this destination from the webhooks queue

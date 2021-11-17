@@ -8,12 +8,13 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href="https://rapidapi.com/fastwebhooks-fastwebhooks-default/api/webhooks2" target="_blank"><img src="https://storage.googleapis.com/code-snippets/connect-on-rapidapi-light.png" width="215" alt="Connect on RapidAPI"></a>
+  - <a href="https://rapidapi.com/fastwebhooks-fastwebhooks-default/api/webhooks2" target="_blank">Connect on RapidAPI</a>
 
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
   - destinations
+  - responses
   - errors
 
 search: true
@@ -336,7 +337,13 @@ fetch("https://webhooks2.p.rapidapi.com/", requestOptions)
             ],
             "webhook_id": "WEH_0qXRu3IEQNfH8OCoZYIZ9hNTeEpQMFgy"
         }
-    ]
+    ],
+    "metadata": {
+        "limit": 50,
+        "next": null,
+        "previous": null,
+        "total_count": 2
+    }
 }
 ```
 
@@ -349,18 +356,17 @@ This endpoint retrieves all webhooks and their correspondent destinations.
 
 ### HTTP Response
 
-See [Webhook Responses](#webhook-responses)
+See [Webhook Response](#webhook-base-response)
 
-<!-- ### Query Parameters
+### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted. -->
-
-<!-- <aside class="success">
-Webhook retention period is 15 days!
-</aside> -->
+limit | 50 | restrict the limit of records returned by the endpoint, maximum value allowed is 500
+next | null | the next cursor page, returns the next 50 records on the pagination, this data is returned at the metadata object on the response, more [here](#cursor-metadata-response)
+previous | null | the previous cursor page, returns the previous 50 records on the pagination, this data is returned at the metadata object on the response, more [here](#cursor-metadata-response)
+from_date | | the from date to limit the range of records returned, dates must be send using iso8601 format, ie yyyy-MM-DD, other formats will be ignored
+to_date | | the to date to limit the range of records returned, dates must be send using iso8601 format, ie yyyy-MM-DD, other formats will be ignored
 
 ## Get a Specific Webhook
 
@@ -458,32 +464,8 @@ webhook_id | The ID of the webhook to retrieve
 
 ### HTTP Response
 
-See [Webhook Responses](#webhook-responses)
+See [Webhook Response](#webhook-base-response)
 
-
-## Webhook Responses
-
-Here's a list of detailed response fields for the webhooks api.
-
-### Webhook
-
-Field | Description
------ | -----------
-webhook_id | unique id representing your webhook
-destinations | list of destinations associated to your webhook
-
-### Destination
-
-Field | Description
------ | -----------
-id | unique id representing your destinations
-status | current status of your destination, possible values are listed [here](#status)
-attempt | the number of attempts made so far
-url | the url set to this destination
-additional_headers | headers used when calling this destination's url
-last_attempt_at | date time that happened the last attempt of this destination, in UTC
-last_response_code | last response code returned by this destination's call
-errors | list of errors that happened on this destination
 
 ### Errors
 
