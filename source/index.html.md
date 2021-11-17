@@ -223,6 +223,10 @@ url | the url to send the payload to
 additional_headers | additional headers to append to the request
 
 <aside class="notice">
+This endpoint has idempotency check, if you get a 409 response code check if your request body is conflicting with another one. If you need the same payload content to be sent to the same URL repeated times we recommend to add a timestamp to your payload.
+</aside>
+
+<aside class="notice">
 We always send the payload as a POST method, this cannot be changed.
 </aside>
 
@@ -465,12 +469,3 @@ webhook_id | The ID of the webhook to retrieve
 ### HTTP Response
 
 See [Webhook Response](#webhook-base-response)
-
-
-### Errors
-
-Field | Description
------ | -----------
-error_code | last http code returned
-error_hint | a hint linking to http.cat with the error code returned
-error_message | the http body returned by the destination

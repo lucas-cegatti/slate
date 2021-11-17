@@ -34,7 +34,15 @@ url | the url set to this destination
 additional_headers | headers used when calling this destination's url
 last_attempt_at | date time that happened the last attempt of this destination, in UTC
 last_response_code | last response code returned by this destination's call
-errors | list of errors that happened on this destination
+errors | list of errors that happened on this destination, more details [here](#destination-errors-response)
+
+### Destination Errors Response
+
+Field | Description
+----- | -----------
+error_code | last http code returned
+error_hint | a hint linking to http.cat with the error code returned
+error_message | the http body returned by the destination
 
 ## Cursor Metadata Response
 Field | Description
