@@ -588,6 +588,10 @@ Your created webhooks will be associated to your RapidApi's user key.
 </tbody></table>
 
 <aside class="notice">
+This endpoint has idempotency check, if you get a 409 response code check if your request body is conflicting with another one. If you need the same payload content to be sent to the same URL repeated times we recommend to add a timestamp to your payload.
+</aside>
+
+<aside class="notice">
 We always send the payload as a POST method, this cannot be changed.
 </aside>
 
@@ -820,26 +824,6 @@ Our default content-type header is application/json, you can change it at destin
 </tbody></table>
 <h3 id='http-response-2'>HTTP Response</h3>
 <p>See <a href="#webhook-base-response">Webhook Response</a></p>
-<h3 id='errors'>Errors</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>error_code</td>
-<td>last http code returned</td>
-</tr>
-<tr>
-<td>error_hint</td>
-<td>a hint linking to http.cat with the error code returned</td>
-</tr>
-<tr>
-<td>error_message</td>
-<td>the http body returned by the destination</td>
-</tr>
-</tbody></table>
 <h1 id='destinations'>Destinations</h1><h2 id='get-all-destinations'>Get All Destinations</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s2">"uri"</span>
 <span class="nb">require</span> <span class="s2">"net/http"</span>
 
@@ -1251,7 +1235,27 @@ Our default content-type header is application/json, you can change it at destin
 </tr>
 <tr>
 <td>errors</td>
-<td>list of errors that happened on this destination</td>
+<td>list of errors that happened on this destination, more details <a href="#destination-errors-response">here</a></td>
+</tr>
+</tbody></table>
+<h3 id='destination-errors-response'>Destination Errors Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error_code</td>
+<td>last http code returned</td>
+</tr>
+<tr>
+<td>error_hint</td>
+<td>a hint linking to http.cat with the error code returned</td>
+</tr>
+<tr>
+<td>error_message</td>
+<td>the http body returned by the destination</td>
 </tr>
 </tbody></table>
 <h2 id='cursor-metadata-response'>Cursor Metadata Response</h2>
@@ -1279,12 +1283,6 @@ Our default content-type header is application/json, you can change it at destin
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
 <table><thead>
 <tr>
 <th>Error Code</th>
@@ -1302,6 +1300,10 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 <tr>
 <td>404</td>
 <td>Not Found -- The resource could not be found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict -- The same resource was sent twice.</td>
 </tr>
 <tr>
 <td>422</td>
